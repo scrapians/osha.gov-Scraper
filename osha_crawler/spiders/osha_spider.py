@@ -9,4 +9,11 @@ class OshaSpider(scrapy.Spider):
     def parse(self, response):
         breakpoint()
         last_table = response.xpath("//table")[-1]
-        headings = last_table.xpath(".//tbody/tr/th")
+        headings = last_table.xpath(".//th/text()").extract()
+        rows_element = last_table.xpath(".//tr")[1:]
+
+        for i,row_element in enumerate(rows_element):
+            item = dict()
+            headling
+            rows_data = row_element.xpath(".//td//text()").extract()
+            yeild 
